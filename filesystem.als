@@ -47,4 +47,4 @@ fact nonEmptyFS {
     some Object
 }
 
-check uniqueRoot for 7 
+check uniqueRoot for 7
