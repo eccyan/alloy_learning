@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ ! "$ALLOY_DIST_JAR" ]; then
+  echo 'Must set $ALLOY_DIST_JAR' >&2
+  exit 1;
+fi
+
+
+java -cp $ALLOY_DIST_JAR edu.mit.csail.sdg.alloy4whole.SimpleCLI $*
