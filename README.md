@@ -8,7 +8,6 @@
 
 ```sh
 $ git clone git@github.com:AlloyTools/org.alloytools.alloy.git
-$ git clone git@github.com:AlloyTools/org.alloytools.alloy.git
 $ cd org.alloytools.alloy
 $ ./gradlew build
 ```
