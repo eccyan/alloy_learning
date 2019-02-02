@@ -1,18 +1,24 @@
 abstract sig Role {}
-sig Admin extends Role {}
-sig Member extends Role {}
+lone sig Admin extends Role {}
+lone sig Member extends Role {}
 
 abstract sig Item  {}
-sig Name extends Item {}
-sig Tel extends Item {}
+lone sig Name extends Item {}
+lone sig Tel extends Item {}
 
-sig Visibility { role : some Role, item : some Item, }
+one sig Visibility { role : one Role, item : some Item }
 
-fact anyoneCanSeeName {
-  all v: Visibility | Name in v.item and Role in v.role
+fact adminCanSeeName {
+  all v: Visibility,  r: Admin, i: Name | (r -> i) in (v.role -> v.item)
 }
-fact memberCannotSeeName  {
-  all v: Visibility | Tel not in v.item and Member in v.role
+fact adminCanSeeTel {
+  all v: Visibility,  r: Admin, i: Tel | (r -> i) in (v.role -> v.item)
+}
+fact memberCanSeeName {
+  all v: Visibility,  r: Member, i: Name | (r -> i) in (v.role -> v.item)
+}
+fact memberCannotSeeTel {
+  all v: Visibility,  r: Member, i: Tel | (r -> i) not in (v.role -> v.item)
 }
 
-run {} for 7 but 1 Visibility
+run {} for 7
