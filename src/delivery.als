@@ -8,7 +8,7 @@ sig Period {
   t1 != t2
 }
 
-one sig Delivery {
+one sig Deliverer {
   days    : some Day,
   periods : some Period,
 }
